@@ -21,6 +21,6 @@ jobs:
             key: ${{ secrets.KEY }}
             script: |
                 cd /home/ubuntu/temp
-                git pull origin master
+                git pull origin main
                 npm install
                 pm2 restart all
