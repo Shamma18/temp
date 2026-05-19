@@ -20,7 +20,7 @@ jobs:
             username: ${{ secrets.USERNAME }}
             key: ${{ secrets.KEY }}
             script: |
-                cd /temp
+                cd /home/ubuntu/temp
                 git pull origin master
                 npm install
                 pm2 restart all
