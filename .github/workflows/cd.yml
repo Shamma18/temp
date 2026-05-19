@@ -1,0 +1,26 @@
+name: Build on PR
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    
+    steps:
+        - name: Checkout Code
+          uses: actions/checkout@v3  
+          
+        - name: ssh into machine
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.KEY }}
+            script: |
+                cd /app
+                git pull origin master
+                npm install
+                pm2 restart all
